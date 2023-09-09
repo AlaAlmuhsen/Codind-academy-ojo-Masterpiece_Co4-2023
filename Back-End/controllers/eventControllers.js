@@ -68,6 +68,8 @@ const createEvent = async (req, res) => {
          eventOrganizer,
          numberOfTickets,
          DateOfEvent,
+         location,
+         price,
       });
       res.status(200).json(event);
    } catch (error) {
