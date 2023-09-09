@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
    textInput: {
       color: "white",
       paddingLeft: 8,
+      flex: 1,
    },
    searchBoxContainer: {
       backgroundColor: "#C83B3B",

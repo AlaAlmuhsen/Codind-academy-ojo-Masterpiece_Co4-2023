@@ -13,6 +13,7 @@ import {
    MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import EventDetails from "./screens/StackScreens/EventDetails";
 
 const Stack = createStackNavigator();
 
@@ -40,6 +41,16 @@ function StackGroup() {
             options={{
                headerShown: false,
                title: "",
+            }}
+         />
+         <Stack.Screen
+            name="EventDetails"
+            component={EventDetails}
+            options={{
+               headerShown: true,
+               title: "",
+               headerStyle: { backgroundColor: "#C83B3B" },
+               headerTintColor: "white",
             }}
          />
       </Stack.Navigator>

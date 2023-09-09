@@ -19,8 +19,8 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 export default function Signin({ navigation, route }) {
    const [hidePassword, setHidePassword] = useState(true);
 
-   const [email, setEmail] = useState("");
-   const [password, setPassword] = useState("");
+   const [email, setEmail] = useState("testmobile3@gmail.com");
+   const [password, setPassword] = useState("Aa12345678#");
 
    const { signin, isLoading, error } = useSignin();
 

@@ -27,8 +27,14 @@ const getEvent = async (req, res) => {
 
 // create new event
 const createEvent = async (req, res) => {
-   const { eventTitle, eventOrganizer, numberOfTickets, DateOfEvent } =
-      req.body;
+   const {
+      eventTitle,
+      eventOrganizer,
+      numberOfTickets,
+      DateOfEvent,
+      location,
+      price,
+   } = req.body;
 
    let emptyFields = [];
 
@@ -43,6 +49,12 @@ const createEvent = async (req, res) => {
    }
    if (!DateOfEvent) {
       emptyFields.push("DateOfEvent");
+   }
+   if (!location) {
+      emptyFields.push("location");
+   }
+   if (!price) {
+      emptyFields.push("price");
    }
    if (emptyFields.length > 0) {
       return res
