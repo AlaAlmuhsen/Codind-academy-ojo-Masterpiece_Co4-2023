@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/user");
-const companyRoutes = require("./routes/company");
+const eventsRoutes = require("./routes/event");
 const morgan = require("morgan");
 
 const app = express();
@@ -14,7 +14,7 @@ app.use(morgan("dev"));
 
 // Routes
 app.use("/api/user", userRoutes);
-app.use("/api/company", companyRoutes);
+app.use("/api/events", eventsRoutes);
 
 // connect to db
 mongoose.connect(process.env.MONGO_URL).then(() => {
