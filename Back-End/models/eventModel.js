@@ -28,6 +28,10 @@ const eventsSchema = new Schema(
          type: String,
          required: true,
       },
+      timeOfEvent: {
+         type: String,
+         required: true,
+      },
       location: {
          type: String,
          required: true,
@@ -37,6 +41,10 @@ const eventsSchema = new Schema(
          required: true,
       },
       eventBackgroundimage: {
+         type: String,
+         required: true,
+      },
+      aboutEvent: {
          type: String,
          required: true,
       },

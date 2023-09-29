@@ -22,7 +22,7 @@ export default function FlatListCard({ item }) {
       >
          <Image
             source={{
-               uri: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+               uri: item.eventBackgroundimage,
             }}
             style={{
                width: "100%",
