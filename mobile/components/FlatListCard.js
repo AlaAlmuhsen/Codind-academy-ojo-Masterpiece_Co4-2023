@@ -21,9 +21,8 @@ export default function FlatListCard({ item }) {
          onPress={() => navigate("EventDetails", { item })}
       >
          <Image
-            // source={logo}
             source={{
-               uri: "https://placehold.co/600x400/png",
+               uri: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             }}
             style={{
                width: "100%",
@@ -32,12 +31,33 @@ export default function FlatListCard({ item }) {
                marginBottom: 10,
             }}
          />
-         <Text style={styles.headerh2}>{item.eventTitle}</Text>
-         <Text>
-            <Entypo name="location-pin" size={24} color="black" />
+         <Text style={styles.headerh1}>{item.eventTitle}</Text>
+         <Text style={{ marginTop: 15, color: "grey", fontSize: 18 }}>
+            <Entypo name="location-pin" size={24} color="grey" />
             {item.location}
          </Text>
-         <Text>Price</Text>
+         <View
+            style={{
+               position: "absolute",
+               top: 20,
+               left: 20,
+               width: 40,
+               height: 40,
+               backgroundColor: "red",
+               alignItems: "center",
+               justifyContent: "center",
+               borderRadius: 5,
+               backgroundColor: "white",
+               opacity: 1,
+            }}
+         >
+            <Text style={{ color: "#C83B3B", fontWeight: "bold" }}>
+               {item.DateOfEvent.split(" ")[0]}
+            </Text>
+            <Text style={{ color: "#C83B3B", fontWeight: "bold" }}>
+               {item.DateOfEvent.split(" ")[1].split("", 3)}
+            </Text>
+         </View>
       </TouchableOpacity>
    );
 }

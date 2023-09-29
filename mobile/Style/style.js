@@ -121,6 +121,11 @@ const styles = StyleSheet.create({
    flatListContainer: {
       height: 300,
    },
+   headerh1: {
+      fontSize: 24,
+      fontWeight: "bold",
+      marginBottom: 10,
+   },
    headerh2: {
       fontSize: 20,
       fontWeight: "bold",
