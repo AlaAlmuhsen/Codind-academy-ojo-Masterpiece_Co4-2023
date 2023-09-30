@@ -14,6 +14,7 @@ import {
 } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import EventDetails from "./screens/StackScreens/EventDetails";
+import Purchase from "./screens/StackScreens/Purchase";
 
 const Stack = createStackNavigator();
 
@@ -53,6 +54,7 @@ function StackGroup() {
                headerTintColor: "white",
             }}
          />
+         <Stack.Screen name="Purchase" component={Purchase} />
       </Stack.Navigator>
    );
 }
