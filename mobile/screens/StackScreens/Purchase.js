@@ -4,11 +4,33 @@ import { AntDesign, FontAwesome, Fontisto, Entypo } from "@expo/vector-icons";
 import { View, Text, Pressable } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import styles from "../../Style/style";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function Purchase({ route }) {
-   // const { navigate } = useNavigation();
+   const { navigate } = useNavigation();
+   const { user } = useAuthContext();
    const { params } = route;
-   console.log(params.item);
+
+   const handlePurchase = async () => {
+      const eventId = params.item._id;
+      console.log(eventId);
+      const responce = await fetch(
+         "https://ticketmaster-bsc1.onrender.com/api/ticket",
+         {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+               Authorization: `Bearer ${user.token}`,
+            },
+            body: JSON.stringify({ eventId }),
+         }
+      );
+      const json = await responce.json();
+
+      if (responce.ok) {
+         navigate("tickets");
+      }
+   };
    return (
       <ScrollView style={styles.container}>
          <View
@@ -72,7 +94,6 @@ export default function Purchase({ route }) {
                      flex: 1,
                   }}
                   placeholder="Exp Date"
-                  
                />
                <TextInput
                   style={{
@@ -93,6 +114,7 @@ export default function Purchase({ route }) {
                      padding: 10,
                      borderRadius: 10,
                   }}
+                  onPress={handlePurchase}
                >
                   <Text style={{ fontSize: 24, color: "white" }}>Pay Now</Text>
                </Pressable>

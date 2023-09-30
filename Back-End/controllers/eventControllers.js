@@ -32,8 +32,11 @@ const createEvent = async (req, res) => {
       eventOrganizer,
       numberOfTickets,
       DateOfEvent,
+      timeOfEvent,
       location,
       price,
+      eventBackgroundimage,
+      aboutEvent,
    } = req.body;
 
    let emptyFields = [];
@@ -50,11 +53,20 @@ const createEvent = async (req, res) => {
    if (!DateOfEvent) {
       emptyFields.push("DateOfEvent");
    }
+   if (!timeOfEvent) {
+      emptyFields.push("timeOfEvent");
+   }
    if (!location) {
       emptyFields.push("location");
    }
    if (!price) {
       emptyFields.push("price");
+   }
+   if (!eventBackgroundimage) {
+      emptyFields.push("eventBackgroundimage");
+   }
+   if (!aboutEvent) {
+      emptyFields.push("aboutEvent");
    }
    if (emptyFields.length > 0) {
       return res
@@ -68,8 +80,11 @@ const createEvent = async (req, res) => {
          eventOrganizer,
          numberOfTickets,
          DateOfEvent,
+         timeOfEvent,
          location,
          price,
+         eventBackgroundimage,
+         aboutEvent,
       });
       res.status(200).json(event);
    } catch (error) {

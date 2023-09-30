@@ -7,7 +7,6 @@ import { Entypo } from "@expo/vector-icons";
 
 export default function FlatListCard({ item }) {
    const { navigate } = useNavigation();
-   console.log(item);
    return (
       <TouchableOpacity
          style={{
