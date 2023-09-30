@@ -9,6 +9,14 @@ const getTickets = async (req, res) => {
    res.status(200).json(tickets);
 };
 
+// Get All Tickets For One User
+const getTicketsForUser = async (req, res) => {
+   const { _id } = req.user;
+   const tickets = await Ticket.find({ userId: _id }).sort({ createdAt: -1 });
+
+   res.status(200).json(tickets);
+};
+
 // Get a Single Ticket
 const getTicket = async (req, res) => {
    const { id } = req.params;
@@ -41,7 +49,13 @@ const createTicket = async (req, res) => {
          .status(400)
          .json({ error: "Please fill in all the fields", emptyFields });
    }
-   const { numberOfSoldTickets } = await Event.findById(eventId);
+   const {
+      numberOfSoldTickets,
+      eventTitle,
+      DateOfEvent,
+      timeOfEvent,
+      eventBackgroundimage,
+   } = await Event.findById(eventId);
    userId = req.user._id.toString();
 
    try {
@@ -49,6 +63,10 @@ const createTicket = async (req, res) => {
          eventId,
          userId,
          ticketNumber: numberOfSoldTickets + 1,
+         eventTitle,
+         DateOfEvent,
+         timeOfEvent,
+         eventBackgroundimage,
       });
 
       const allTicketSold = await Ticket.find({ eventId }).select("userId");
@@ -108,6 +126,7 @@ const createTicket = async (req, res) => {
 
 module.exports = {
    getTickets,
+   getTicketsForUser,
    getTicket,
    createTicket,
    // deleteTicket,

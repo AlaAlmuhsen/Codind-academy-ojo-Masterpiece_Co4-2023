@@ -2,6 +2,7 @@ const express = require("express");
 const requireAuth = require("../middleware/requireAuth");
 const {
    getTickets,
+   getTicketsForUser,
    // getTicket,
    createTicket,
    // deleteTicket,
@@ -15,6 +16,9 @@ router.use(requireAuth);
 
 // Get Events
 router.get("/", getTickets);
+
+// Get Events
+router.get("/getticketforuser", getTicketsForUser);
 
 // // Get a single Event
 // router.get("/:id", getEvent);

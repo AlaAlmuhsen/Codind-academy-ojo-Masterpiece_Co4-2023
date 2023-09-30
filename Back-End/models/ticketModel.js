@@ -16,6 +16,22 @@ const ticketSchema = new Schema(
          type: Number,
          required: true,
       },
+      eventTitle: {
+         type: String,
+         required: true,
+      },
+      DateOfEvent: {
+         type: String,
+         required: true,
+      },
+      timeOfEvent: {
+         type: String,
+         required: true,
+      },
+      eventBackgroundimage: {
+         type: String,
+         required: true,
+      },
    },
    { timestamps: true }
 );
