@@ -94,7 +94,7 @@ function DrawerGroup() {
             headerTintColor: "white",
          })}
       >
-         <Drawer.Screen name="TabGroup" component={TabGroup} />
+         <Drawer.Screen name="Home" component={TabGroup} />
          <Drawer.Screen name="MyProfile" component={MyProfile} />
       </Drawer.Navigator>
    );
