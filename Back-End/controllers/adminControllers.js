@@ -13,8 +13,8 @@ const getAdminData = async (req, res) => {
    const events = await Event.find({});
    returnData["numberOfevents"] = events.length;
 
-   const Ticket = await Event.find({});
-   returnData["numberOfTicketSold"] = Ticket.length;
+   const ticket = await Ticket.find({});
+   returnData["numberOfTicketSold"] = ticket.length;
 
    let revinew = 0;
 
