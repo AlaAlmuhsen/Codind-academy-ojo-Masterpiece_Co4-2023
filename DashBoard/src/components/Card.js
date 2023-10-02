@@ -7,7 +7,7 @@ const Card = (props) => {
             <p style={props.pstyle}>{props.title}</p>
             <p>{props.value}</p>
          </div>
-         <i class={props.icon}></i>
+         <i className={props.icon}></i>
       </div>
    );
 };

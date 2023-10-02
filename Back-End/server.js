@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/user");
 const eventsRoutes = require("./routes/event");
 const ticketRoutes = require("./routes/ticket");
+const adminRoutes = require("./routes/admin");
 const morgan = require("morgan");
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(morgan("dev"));
 app.use("/api/user", userRoutes);
 app.use("/api/events", eventsRoutes);
 app.use("/api/ticket", ticketRoutes);
+app.use("/api/admin", adminRoutes);
 
 // connect to db
 mongoose.connect(process.env.MONGO_URL).then(() => {

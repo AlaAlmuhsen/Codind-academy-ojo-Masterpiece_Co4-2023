@@ -332,3 +332,27 @@ main .box i {
    color: rgb(176, 176, 176);
    font-size: 23px;
 }
+
+.events_table {
+   width: 100%;
+   margin-top: 20px;
+   border: 1px solid grey;
+}
+
+.events_table tr th {
+   font-size: 16px;
+}
+
+.events_table th,
+.events_table td {
+   padding: 15px 10px;
+}
+
+.events_table td,
+.events_table th {
+   border: 1px solid black;
+}
+
+.events_table tr:nth-child(even) {
+   background-color: rgb(207, 207, 207);
+}

@@ -35,7 +35,7 @@ export default function Ticket() {
             Your Tickets :
          </Text>
          {tickets === undefined && <Text>Loading...</Text>}
-         {tickets.length === 0 && <Text>No Tickets</Text>}
+         {/* {tickets.length === 0 && <Text>No Tickets</Text>} */}
          {tickets !== undefined && (
             <ScrollView style={{}}>
                {tickets.map((ticket, index) => {

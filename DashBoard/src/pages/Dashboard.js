@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import Aside from "../components/Aside";
 import Header from "../components/Header";
 import Card from "../components/Card";
+import EventsTable from "../components/EventsTable";
+import { useEventContext } from "../hooks/useEventContext";
 
 const Dashboard = () => {
    const { user } = useAuthContext();
+   const { events, dispatch } = useEventContext();
+   useEffect(() => {
+      const fetchEvents = async () => {
+         const response = await fetch("api/events", {
+            headers: {
+               Authorization: `Bearer ${user.token}`,
+            },
+         });
 
+         const json = await response.json();
+
+         if (response.ok) {
+            dispatch({ type: "SET_EVENTS", payload: json });
+         }
+      };
+
+      if (user) {
+         fetchEvents();
+      }
+   }, [user, dispatch]);
    return (
       <div className="dashboard">
          <Aside />
@@ -30,7 +51,7 @@ const Dashboard = () => {
                      icon="fa-solid fa-ticket"
                   />
                   <Card
-                     title="Event Planners"
+                     title="Total Number Of Ticket Sold"
                      value="10"
                      pstyle={{ color: "#36b9cc" }}
                      bstyle={{ borderColor: "#36b9cc" }}
@@ -43,6 +64,10 @@ const Dashboard = () => {
                      bstyle={{ borderColor: "#f6c23e" }}
                      icon="fa-solid fa-dollar-sign"
                   />
+               </div>
+               <div>
+                  <h3>Events Table</h3>
+                  <EventsTable events={events}></EventsTable>
                </div>
             </main>
          </div>
