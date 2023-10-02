@@ -7,6 +7,7 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Signin from "./pages/Signin";
 import AddAdmin from "./pages/AddAdmin";
+import AddEvent from "./pages/AddEvent";
 
 const App = () => {
    const { user } = useAuthContext();
@@ -66,6 +67,16 @@ const App = () => {
                   element={
                      user && user.role !== "user" ? (
                         <AddAdmin />
+                     ) : (
+                        <Navigate to="/signin" />
+                     )
+                  }
+               />
+               <Route
+                  path="/add-event"
+                  element={
+                     user && user.role !== "user" ? (
+                        <AddEvent />
                      ) : (
                         <Navigate to="/signin" />
                      )

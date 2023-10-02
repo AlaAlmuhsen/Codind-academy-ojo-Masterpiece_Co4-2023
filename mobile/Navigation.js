@@ -16,6 +16,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import EventDetails from "./screens/StackScreens/EventDetails";
 import Purchase from "./screens/StackScreens/Purchase";
 import Ticket from "./screens/TabScreens/Ticket";
+import Events from "./screens/TabScreens/Events";
 
 const Stack = createStackNavigator();
 
@@ -139,9 +140,9 @@ function TabGroup() {
          })}
       >
          <Tab.Screen name="explore" component={Explore} />
-         <Tab.Screen name="events" component={Explore} />
+         <Tab.Screen name="events" component={Events} />
          <Tab.Screen name="tickets" component={Ticket} />
-         <Tab.Screen name="favorite" component={Explore} />
+         {/* <Tab.Screen name="favorite" component={Explore} /> */}
       </Tab.Navigator>
    );
 }

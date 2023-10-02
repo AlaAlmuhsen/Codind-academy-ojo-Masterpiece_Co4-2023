@@ -292,6 +292,7 @@ ul {
 main {
    background-color: #e5e7eb;
    padding: 20px;
+   height: 100vh;
 }
 
 main .box {
@@ -337,6 +338,7 @@ main .box i {
    width: 100%;
    margin-top: 20px;
    border: 1px solid grey;
+   text-align: center;
 }
 
 .events_table tr th {
@@ -355,4 +357,41 @@ main .box i {
 
 .events_table tr:nth-child(even) {
    background-color: rgb(207, 207, 207);
+}
+
+
+.event-form {
+   height: 100%;
+}
+
+.event-form div div {
+   display: flex;
+   flex-direction: column;
+}
+
+.event-form input {
+   padding: 10px 10px;
+   margin-bottom: 15px;
+   border-radius: 5px;
+   border-style: solid;
+   border-color: #5837D0;
+
+}
+
+.event-form label {
+   font-weight: 600;
+   margin-bottom: 5px;
+}
+
+.submit {
+   background-color: #5837D0;
+   margin-top: 10px;
+   color: white;
+   font-weight: 600;
+}
+
+.submit:hover {
+   background-color: white;
+   color: var(--primary);
+   font-weight: 600;
 }

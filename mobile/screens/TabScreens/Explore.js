@@ -17,6 +17,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 export default function Explore({ navigation }) {
    const { user } = useAuthContext();
    const [events, setEvents] = useState();
+   const [neraby, setNeraby] = useState();
    useLayoutEffect(() => {
       const fetchEvents = async () => {
          const responce = await fetch(
@@ -27,10 +28,17 @@ export default function Explore({ navigation }) {
                },
             }
          );
-         const json = await responce.json();
+         let json = await responce.json();
+         let x = Math.floor(json.length / 2);
+
+         let json1 = json.slice(0, x);
+         let json2 = json.slice(x);
 
          if (responce.ok) {
-            setEvents(json);
+            setEvents(json1);
+         }
+         if (responce.ok) {
+            setNeraby(json2);
          }
       };
 
@@ -77,7 +85,26 @@ export default function Explore({ navigation }) {
                   showsHorizontalScrollIndicator={false}
                />
             </View>
-            <Text>aa</Text>
+            <View style={styles.flatListContainer}>
+               <Text style={styles.headerh2}>Nearby Events</Text>
+               <FlatList
+                  data={neraby}
+                  renderItem={({ item }) => {
+                     return (
+                        <View
+                           style={{
+                              flexDirection: "row",
+                              width: 270,
+                           }}
+                        >
+                           <FlatListCard item={item}></FlatListCard>
+                        </View>
+                     );
+                  }}
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+               />
+            </View>
          </View>
       </View>
    );

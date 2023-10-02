@@ -33,7 +33,16 @@ const EventsRow = ({ event }) => {
          <td style={{ color: "green", fontWeight: "bold" }}>
             {event.numberOfSoldTickets * event.price}$
          </td>
-         <td onClick={handleClick}>Delete Event</td>
+         <td
+            onClick={handleClick}
+            style={{
+               textAlign: "center",
+               color: "#c90d0d",
+               fontSize: 18,
+            }}
+         >
+            <i className="fa-solid fa-trash"></i>
+         </td>
       </tr>
    );
 };

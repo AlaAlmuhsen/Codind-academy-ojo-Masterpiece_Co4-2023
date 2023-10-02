@@ -6,7 +6,7 @@ export default function AddAdmin() {
       <div className="dashboard">
          <Aside />
          <header>
-            <i class="fa-solid fa-bars"></i>
+            <i className="fa-solid fa-bars"></i>
          </header>
       </div>
    );

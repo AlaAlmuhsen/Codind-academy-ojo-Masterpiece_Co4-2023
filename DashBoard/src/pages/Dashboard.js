@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import Aside from "../components/Aside";
 import Header from "../components/Header";
@@ -9,6 +9,8 @@ import { useEventContext } from "../hooks/useEventContext";
 const Dashboard = () => {
    const { user } = useAuthContext();
    const { events, dispatch } = useEventContext();
+
+   const [adminData, setAdminData] = useState([]);
    useEffect(() => {
       const fetchEvents = async () => {
          const response = await fetch("api/events", {
@@ -24,10 +26,23 @@ const Dashboard = () => {
          }
       };
 
+      const fetchAdminData = async () => {
+         const response = await fetch("api/admin", {
+            headers: {
+               Authorization: `Bearer ${user.token}`,
+            },
+         });
+
+         const json = await response.json();
+
+         setAdminData(json);
+      };
+
       if (user) {
          fetchEvents();
+         fetchAdminData();
       }
-   }, [user, dispatch]);
+   }, []);
    return (
       <div className="dashboard">
          <Aside />
@@ -38,28 +53,28 @@ const Dashboard = () => {
                <div className="row gap-3">
                   <Card
                      title="Number Of Users"
-                     value="10"
+                     value={adminData.numberOfusers}
                      pstyle={{ color: "#4e73df" }}
                      bstyle={{ borderColor: "#4e73df" }}
                      icon="fa-solid fa-users"
                   />
                   <Card
                      title="Active Events"
-                     value="100"
+                     value={adminData.numberOfevents}
                      pstyle={{ color: "#1cc88a" }}
                      bstyle={{ borderColor: "#1cc88a" }}
                      icon="fa-solid fa-ticket"
                   />
                   <Card
                      title="Total Number Of Ticket Sold"
-                     value="10"
+                     value={adminData.numberOfTicketSold}
                      pstyle={{ color: "#36b9cc" }}
                      bstyle={{ borderColor: "#36b9cc" }}
                      icon="fa-solid fa-clipboard-list"
                   />
                   <Card
                      title="Revinew"
-                     value="10$"
+                     value={adminData.revinew}
                      pstyle={{ color: "#f6c23e" }}
                      bstyle={{ borderColor: "#f6c23e" }}
                      icon="fa-solid fa-dollar-sign"

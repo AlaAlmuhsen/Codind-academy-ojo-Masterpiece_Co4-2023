@@ -18,8 +18,8 @@ const Aside = () => {
                      <Link to={"/add-admin"}>
                         <li>add admin</li>
                      </Link>
-                     <Link to={"/add-admin"}>
-                        <li>events </li>
+                     <Link to={"/add-event"}>
+                        <li>add event</li>
                      </Link>
                   </ul>
                </AsideList>
